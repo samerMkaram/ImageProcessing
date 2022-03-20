@@ -33,11 +33,11 @@ route.use(
   (req: Request, res: Response, next: NextFunction) => {
     const fileName = req.query.filename;
     const ext = utls.GetExt(
-      path.resolve(__dirname, '..', 'api','routes','resize','assets'),
+      path.resolve(__dirname, '..', 'api', 'routes', 'resize', 'assets'),
       fileName as string
     );
     const inFileName =
-      path.resolve(__dirname, '..','api','routes','resize','assets', fileName as string) + ext;
+      path.resolve(__dirname, '..', 'api', 'routes', 'resize', 'assets', fileName as string) + ext;
     //validate filename is exists in assets folder
     if (!fsPromises.existsSync(inFileName)) {
       res.send('Invalid filename');

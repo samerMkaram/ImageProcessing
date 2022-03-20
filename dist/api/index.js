@@ -32,8 +32,8 @@ route.use('/resize', (req, res, next) => {
     }
 }, (req, res, next) => {
     const fileName = req.query.filename;
-    const ext = utls_1.default.GetExt(path_1.default.resolve(__dirname, '..') + '\\api\\routes\\resize\\assets\\', fileName);
-    const inFileName = path_1.default.resolve(__dirname, '..') + '\\api\\routes\\resize\\assets\\' + fileName + ext;
+    const ext = utls_1.default.GetExt(path_1.default.resolve(__dirname, '..', 'api', 'routes', 'resize', 'assets'), fileName);
+    const inFileName = path_1.default.resolve(__dirname, '..', 'api', 'routes', 'resize', 'assets', fileName) + ext;
     //validate filename is exists in assets folder
     if (!fs_1.default.existsSync(inFileName)) {
         res.send('Invalid filename');

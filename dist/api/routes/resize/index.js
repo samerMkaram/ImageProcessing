@@ -14,18 +14,19 @@ Resize.get('/', (req, res) => {
     const width = req.query.width * 1;
     const heigh = req.query.heigh * 1;
     const outFileName = imageName + '_' + width + '_' + heigh; //final file name to be saved in cache
-    const ext = utls_1.default.GetExt(path_1.default.resolve(__dirname, '..') + '\\resize\\assets\\', imageName);
-    const inFileName = path_1.default.resolve(__dirname, '..') + '\\resize\\assets\\' + imageName + ext;
-    if (!fs_1.default.existsSync(path_1.default.resolve(__dirname, '..') + '\\resize\\cashed\\')) {
-        //create cache directory if not exists
-        const newPath = path_1.default.resolve(__dirname, '..') + '\\resize\\cashed';
+    //Get File extention
+    const ext = utls_1.default.GetExt(path_1.default.resolve(__dirname, '..', 'resize', 'assets'), imageName);
+    //prepare original file name
+    const inFileName = path_1.default.resolve(__dirname, '..', 'resize', 'assets', imageName) + ext;
+    //check if desitnation directory exists or not
+    if (!fs_1.default.existsSync(path_1.default.resolve(__dirname, '..', 'resize', 'cached'))) {
+        const newPath = path_1.default.resolve(__dirname, '..', 'resize', 'cached');
         fs_1.default.mkdir(newPath, () => {
             console.log('New cashed directory created');
         });
     }
-    //final file path to be saved
-    const outFilePath = path_1.default.resolve(__dirname, '..') + '\\resize\\cashed\\' + outFileName + ext;
-    //console.log(outFilePath);
+    //prepare final file path to be saved
+    const outFilePath = path_1.default.resolve(__dirname, '..', 'resize', 'cached', outFileName) + ext;
     //check if file cached before
     if (utls_1.default.ImageExists(outFilePath)) {
         //return old cached image
