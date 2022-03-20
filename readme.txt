@@ -6,11 +6,19 @@ this API is extednable to have other functions than RESIZE
 
 Project structure
 =================================
+<<<<<<< HEAD
 in src/api/ routes directory , there are a route for each function (resize is first one and should be a directory for each new function route)
 
 in resize subdirectory , tow folders 
 	1- assets : where original images exists.  (./src/api/routes/resize/assets)
 	2- cached : where cashed images are saved and called by API (./src/api/routes/resize/cached)
+=======
+in src => routes directory , there are a route for each function (resize is first one and should be a directory for each new function route)
+
+in resize subdirectory , tow folders 
+	1- assets : where original images exists. 
+	2- cached : where cashed images are saved and called by API
+>>>>>>> 8588e544e3a77098884816018793f4930892a0bc
 
 
 Depenecies 
