@@ -39,6 +39,6 @@ scripts
 
 API call
 =================================
-ex=> http://localhost:3000/api/resize?filename=encenadaport&width=1000&heigh=1000
+ex=> http://localhost:5000/api/resize?filename=encenadaport&width=1000&heigh=1000
 
 
