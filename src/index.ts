@@ -3,7 +3,7 @@ import route from './api/index';
 //create server
 const app = express();
 //set por number
-const port = 3000;
+const port = 5000;
 app.get('/', (_req, res) => {
   res.send('Please move to /api/resize 👉');
 });

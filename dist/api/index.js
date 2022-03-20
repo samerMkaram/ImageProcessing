@@ -7,6 +7,7 @@ const express_1 = __importDefault(require("express"));
 const resize_1 = __importDefault(require("./routes/resize"));
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
+const utls_1 = __importDefault(require("./routes/utilities/utls"));
 const route = express_1.default.Router();
 route.get('/', (req, res) => {
     res.send('Main Route , Please move to /resize');
@@ -31,7 +32,8 @@ route.use('/resize', (req, res, next) => {
     }
 }, (req, res, next) => {
     const fileName = req.query.filename;
-    const inFileName = path_1.default.resolve(__dirname, '..') + '\\api\\routes\\resize\\assets\\' + fileName + '.jpg';
+    const ext = utls_1.default.GetExt(path_1.default.resolve(__dirname, '..') + '\\api\\routes\\resize\\assets\\', fileName);
+    const inFileName = path_1.default.resolve(__dirname, '..') + '\\api\\routes\\resize\\assets\\' + fileName + ext;
     //validate filename is exists in assets folder
     if (!fs_1.default.existsSync(inFileName)) {
         res.send('Invalid filename');
