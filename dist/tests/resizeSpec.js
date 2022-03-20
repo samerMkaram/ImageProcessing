@@ -14,6 +14,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const supertest_1 = __importDefault(require("supertest"));
 const index_1 = __importDefault(require("../index"));
+const utls_1 = __importDefault(require("../api/routes/utilities/utls"));
+const path_1 = __importDefault(require("path"));
 const request = (0, supertest_1.default)(index_1.default);
 describe('Test endpoint response', () => {
     it('Get /api response', () => {
@@ -42,5 +44,17 @@ describe('Test endpoint image resize process', () => {
         yield request.get('/api/resize?filename=&width=200&heigh=200').then((res) => {
             expect(res.text).toBe('Invalid filename');
         });
+    }));
+});
+describe('Test Sharp resize function', () => {
+    it('Success ResizeImage', () => __awaiter(void 0, void 0, void 0, function* () {
+        const inFileName = path_1.default.resolve('.', 'src', 'api', 'routes', 'resize', 'assets', 'fjord.jpg');
+        const outFilePath = path_1.default.resolve('.', 'src', 'api', 'routes', 'resize', 'cache');
+        expect(yield utls_1.default.ResizeImage(inFileName, 500, 500, outFilePath)).toBeTruthy;
+    }));
+    it('Fail ResizeImage', () => __awaiter(void 0, void 0, void 0, function* () {
+        const inFileName = '';
+        const outFilePath = path_1.default.resolve('.', 'src', 'api', 'routes', 'resize', 'cache');
+        expect(yield utls_1.default.ResizeImage(inFileName, 500, 500, outFilePath)).toBeFalsy;
     }));
 });

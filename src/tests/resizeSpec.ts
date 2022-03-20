@@ -1,5 +1,7 @@
 import supertest from 'supertest';
 import app from '../index';
+import utls from '../api/routes/utilities/utls';
+import path from 'path';
 
 const request = supertest(app);
 
@@ -34,5 +36,19 @@ describe('Test endpoint image resize process', () => {
     await request.get('/api/resize?filename=&width=200&heigh=200').then((res) => {
       expect(res.text).toBe('Invalid filename');
     });
+  });
+});
+
+describe('Test Sharp resize function', () => {
+  it('Success ResizeImage', async () => {
+    const inFileName = path.resolve('.', 'src', 'api', 'routes', 'resize', 'assets', 'fjord.jpg');
+    const outFilePath = path.resolve('.', 'src', 'api', 'routes', 'resize', 'cache');
+    expect(await utls.ResizeImage(inFileName, 500, 500, outFilePath)).toBeTruthy;
+  });
+
+  it('Fail ResizeImage', async () => {
+    const inFileName = '';
+    const outFilePath = path.resolve('.', 'src', 'api', 'routes', 'resize', 'cache');
+    expect(await utls.ResizeImage(inFileName, 500, 500, outFilePath)).toBeFalsy;
   });
 });

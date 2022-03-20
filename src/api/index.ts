@@ -2,6 +2,7 @@ import express, { Request, Response, NextFunction } from 'express';
 import Resize from './routes/resize';
 import fsPromises from 'fs';
 import path from 'path';
+import utls from './routes/utilities/utls';
 
 const route = express.Router();
 
@@ -31,8 +32,12 @@ route.use(
   },
   (req: Request, res: Response, next: NextFunction) => {
     const fileName = req.query.filename;
+    const ext = utls.GetExt(
+      path.resolve(__dirname, '..', 'api','routes','resize','assets'),
+      fileName as string
+    );
     const inFileName =
-      path.resolve(__dirname, '..') + '\\api\\routes\\resize\\assets\\' + fileName + '.jpg';
+      path.resolve(__dirname, '..','api','routes','resize','assets', fileName as string) + ext;
     //validate filename is exists in assets folder
     if (!fsPromises.existsSync(inFileName)) {
       res.send('Invalid filename');
