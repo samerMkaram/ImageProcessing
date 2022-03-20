@@ -1,6 +1,6 @@
 About
 ==================================
-this API making resize for given image
+this API making resize for given image with diffrent extentions
 this API is extednable to have other functions than RESIZE 
 
 
