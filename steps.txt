@@ -10,9 +10,14 @@ npx eslint --init
 npm install sharp
 npm install supertest jasmine-spec-reporter jasmine
 6.	npm i --save-dev @types/jasmine
+npm i sharp
+npm install express request --save
+npm install supertest
+npm i --save-dev @types/supertest
+npm i @types/sharp
 
 1- read call parameters
-2- search for image name with heigh and width in chched folder,id exists return it
+2- search for image name with heigh and width in chched folder,if exists return it
 4- if image not in cached and exists in asset folder => resize it and save in cached folder
 5- if not exists in assets folder redirect to upload image
 6- if heigh or width <=0 return error

@@ -1,18 +1,20 @@
 import express from 'express';
-
+import route from './api/index';
+//create server
 const app = express();
-const port = 5020;
-app.get('/', (req,res) => {
-  console.log('Server Started ');
-    res.send("hello world 👀");
+//set por number
+const port = 3000;
+app.get('/', (_req, res) => {
+  res.send('Please move to /api/resize 👉');
+});
+//route for resize function
+app.use('/api', route);
+
+app.listen(port, () => {
+  console.log(`Server started on port ${port}`);
 });
 
-app.get('/popk', (req,res) => {
-  const filename ='./assets'+ req.url+'.jpg';
-  console.log(req.url+ 'visited ');
-    //res.send("hello world 👀 " + req.url + " "+ filename);
-    res.sendFile(filename);
+app.use((req, res) => {
+  res.send('you looks lost ✋');
 });
-
-app.listen(port, () => console.log('app started to listen on port ' + port));
-
+export default app;
