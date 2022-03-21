@@ -1,6 +1,6 @@
 About
 ==================================
-this API making resize for given image with diffrent extentions
+this API making resize for given image with diffrent extentions(.jpg , .png)
 this API is extednable to have other functions than RESIZE 
 
 
@@ -12,21 +12,26 @@ in resize subdirectory , tow folders
 	1- assets : where original images exists.  (./src/api/routes/resize/assets)
 	2- cached : where cashed images are saved and called by API (./src/api/routes/resize/cached)
 
+
 Depenecies 
 ==================================
-npm init -y 
-npm install typescript --save-dev
-npx tsc --init
-npm install eslint-config-prettier --save-dev
-npm install eslint-plugin-prettier --save-dev
-npx eslint --init
-npm install sharp
-npm install supertest jasmine-spec-reporter jasmine
-npm install --save-dev @types/jasmine
-npm install sharp
-npm install supertest
-npm install --save-dev @types/supertest
-npm install @types/sharp
+typescript
+prettier
+eslint
+eslint-config-prettier
+eslint-plugin-prettier
+@typescript-eslint/eslint-plugin
+@typescript-eslint/parser
+nodemon
+express
+@types/express
+jasmine
+jasmine-spec-reporter
+@types/jasmine
+sharp
+@types/sharp
+supertest
+@types/supertest
 
 
 scripts
@@ -36,6 +41,7 @@ scripts
 => npm run lint		//run lint 
 => npm run lint:fix	//run lint and fix errors
 => npm run prettier	//run prettier formatter
+
 
 API call
 =================================

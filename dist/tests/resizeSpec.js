@@ -52,9 +52,11 @@ describe('Test Sharp resize function', () => {
         const outFilePath = path_1.default.resolve('.', 'src', 'api', 'routes', 'resize', 'cache');
         expect(yield utls_1.default.ResizeImage(inFileName, 500, 500, outFilePath)).toBeTruthy;
     }));
-    it('Fail ResizeImage', () => __awaiter(void 0, void 0, void 0, function* () {
-        const inFileName = '';
-        const outFilePath = path_1.default.resolve('.', 'src', 'api', 'routes', 'resize', 'cache');
-        expect(yield utls_1.default.ResizeImage(inFileName, 500, 500, outFilePath)).toBeFalsy;
-    }));
+    it('Resize function not threw in case of invalid input', () => {
+        expect(() => __awaiter(void 0, void 0, void 0, function* () {
+            const inFileName = '';
+            const outFilePath = '';
+            yield utls_1.default.ResizeImage(inFileName, -2, 500, outFilePath);
+        })).not.toThrow();
+    });
 });

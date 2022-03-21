@@ -4,17 +4,17 @@ import route from './api/index';
 const app = express();
 //set por number
 const port = 5000;
-app.get('/', (_req, res) => {
+void app.get('/', (_req, res) => {
   res.send('Please move to /api/resize 👉');
 });
 //route for resize function
-app.use('/api', route);
+void app.use('/api', route);
 
-app.listen(port, () => {
+void app.listen(port, () => {
   console.log(`Server started on port ${port}`);
 });
 
-app.use((req, res) => {
+void app.use((req, res) => {
   res.send('you looks lost ✋');
 });
 export default app;

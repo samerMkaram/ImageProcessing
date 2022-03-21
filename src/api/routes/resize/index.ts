@@ -5,7 +5,7 @@ import utls from '../utilities/utls';
 
 const Resize = express.Router();
 
-Resize.get('/', (req: Request, res: Response) => {
+void Resize.get('/', (req: Request, res: Response) => {
   //reading API request parameters
   const imageName = req.query.filename;
   const width = (req.query.width as unknown as number) * 1;
@@ -21,11 +21,10 @@ Resize.get('/', (req: Request, res: Response) => {
   //check if desitnation directory exists or not
   if (!fsPromises.existsSync(path.resolve(__dirname, '..', 'resize', 'cached'))) {
     const newPath = path.resolve(__dirname, '..', 'resize', 'cached');
-    fsPromises.mkdir(newPath, () => {
-      console.log('New cashed directory created');
+    fsPromises.mkdir(newPath, (err) => {
+      if (err) throw err;
     });
   }
-
   //prepare final file path to be saved
   const outFilePath = path.resolve(__dirname, '..', 'resize', 'cached', outFileName) + ext;
 
