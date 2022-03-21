@@ -9,10 +9,10 @@ const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 const utls_1 = __importDefault(require("./routes/utilities/utls"));
 const route = express_1.default.Router();
-route.get('/', (req, res) => {
+void route.get('/', (req, res) => {
     res.send('Main Route , Please move to /resize');
 });
-route.use('/resize', (req, res, next) => {
+void route.use('/resize', (req, res, next) => {
     const width = req.query.width;
     //validate width input
     if (width <= 0 || width === undefined || isNaN(width)) {

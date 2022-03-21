@@ -1,12 +1,16 @@
 import fsPromises from 'fs';
 import sharp from 'sharp';
 
-async function ResizeImage(filename: string, width: number, heigh: number, outFilePath: string) {
+async function ResizeImage(
+  filename: string,
+  width: number,
+  heigh: number,
+  outFilePath: string
+): Promise<void> {
   try {
     await sharp(filename).resize(width, heigh).toFile(outFilePath);
   } catch (error) {
-    //console.log('Error occured');
-    //console.error(error);
+    //console.log(error);
   }
 }
 
