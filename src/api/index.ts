@@ -6,11 +6,11 @@ import utls from './routes/utilities/utls';
 
 const route = express.Router();
 
-route.get('/', (req: Request, res: Response) => {
+void route.get('/', (req: Request, res: Response) => {
   res.send('Main Route , Please move to /resize');
 });
 
-route.use(
+void route.use(
   '/resize',
   (req: Request, res: Response, next: NextFunction) => {
     const width = req.query.width as unknown as number;

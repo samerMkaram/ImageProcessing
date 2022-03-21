@@ -8,7 +8,7 @@ const path_1 = __importDefault(require("path"));
 const fs_1 = __importDefault(require("fs"));
 const utls_1 = __importDefault(require("../utilities/utls"));
 const Resize = express_1.default.Router();
-Resize.get('/', (req, res) => {
+void Resize.get('/', (req, res) => {
     //reading API request parameters
     const imageName = req.query.filename;
     const width = req.query.width * 1;
@@ -21,8 +21,9 @@ Resize.get('/', (req, res) => {
     //check if desitnation directory exists or not
     if (!fs_1.default.existsSync(path_1.default.resolve(__dirname, '..', 'resize', 'cached'))) {
         const newPath = path_1.default.resolve(__dirname, '..', 'resize', 'cached');
-        fs_1.default.mkdir(newPath, () => {
-            console.log('New cashed directory created');
+        fs_1.default.mkdir(newPath, (err) => {
+            if (err)
+                throw err;
         });
     }
     //prepare final file path to be saved

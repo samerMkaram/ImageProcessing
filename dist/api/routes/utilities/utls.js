@@ -20,8 +20,7 @@ function ResizeImage(filename, width, heigh, outFilePath) {
             yield (0, sharp_1.default)(filename).resize(width, heigh).toFile(outFilePath);
         }
         catch (error) {
-            //console.log('Error occured');
-            //console.error(error);
+            //console.log(error);
         }
     });
 }

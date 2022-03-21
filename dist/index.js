@@ -9,15 +9,15 @@ const index_1 = __importDefault(require("./api/index"));
 const app = (0, express_1.default)();
 //set por number
 const port = 5000;
-app.get('/', (_req, res) => {
+void app.get('/', (_req, res) => {
     res.send('Please move to /api/resize 👉');
 });
 //route for resize function
-app.use('/api', index_1.default);
-app.listen(port, () => {
+void app.use('/api', index_1.default);
+void app.listen(port, () => {
     console.log(`Server started on port ${port}`);
 });
-app.use((req, res) => {
+void app.use((req, res) => {
     res.send('you looks lost ✋');
 });
 exports.default = app;

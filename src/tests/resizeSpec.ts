@@ -46,9 +46,11 @@ describe('Test Sharp resize function', () => {
     expect(await utls.ResizeImage(inFileName, 500, 500, outFilePath)).toBeTruthy;
   });
 
-  it('Fail ResizeImage', async () => {
-    const inFileName = '';
-    const outFilePath = path.resolve('.', 'src', 'api', 'routes', 'resize', 'cache');
-    expect(await utls.ResizeImage(inFileName, 500, 500, outFilePath)).toBeFalsy;
+  it('Resize function not threw in case of invalid input', () => {
+    expect(async () => {
+      const inFileName = '';
+      const outFilePath = '';
+      await utls.ResizeImage(inFileName, -2, 500, outFilePath);
+    }).not.toThrow();
   });
 });
